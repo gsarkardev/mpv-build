@@ -26,16 +26,13 @@ jobs:
       - uses: actions/checkout@v4
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Building MPV!
+      - name: Get no. of cores
+        run: num_cores=$(nproc) && echo "No. of cores available is $num_cores"
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Get dependencies and build mpv
         run: |
+          sudo apt update && sudo apt install -y python3-pip ninja-build libharfbuzz-dev autoconf automake libasound2-dev libegl1-mesa-dev libfontconfig-dev libfreetype6-dev libfribidi-dev libgl1-mesa-dev libtool libx11-dev libxext-dev libxinerama-dev libxrandr-dev libxv-dev x11proto-core-dev yasm
           sudo pip3 install --upgrade meson
-          sudo apt update
-          sudo apt install libfreetype6-dev
-          sudo apt install libfribidi-dev
-          sudo apt install libharfbuzz-dev
-          sudo apt install autoconf automake libasound2-dev libegl1-mesa-dev libfontconfig-dev libfreetype6-dev libfribidi-dev libgl1-mesa-dev libtool libx11-dev libxext-dev libxinerama-dev libxrandr-dev libxv-dev x11proto-core-dev yasm
-          ./rebuild -j4
+          chmod +x rebuild
+          ./rebuild -j$num_cores
