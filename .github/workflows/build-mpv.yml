@@ -37,3 +37,11 @@ jobs:
           sudo pip3 install --upgrade meson
           chmod +x rebuild
           ./rebuild -j$num_cores
+
+      # Uploads build directory as artifact
+      - name: Upload build directory
+        uses: actions/upload-artifact@v4
+        with:
+          name: mpv-build
+          path: ./mpv/build
+          retention-days: 90
