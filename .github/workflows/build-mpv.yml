@@ -35,6 +35,11 @@ jobs:
           num_cores=$(nproc) && echo "No. of cores available is $num_cores"
           sudo apt update && sudo apt install -y gcc clang yasm git meson ninja-build autoconf autotools-dev libx11-dev libxext-dev libvdpau-dev libgl1-mesa-dev libxv-dev libasound2-dev libpulse-dev libfribidi-dev libfreetype6-dev libfontconfig1-dev libjpeg-dev libssl-dev libgnutls28-dev youtube-dl libx264-dev libmp3lame-dev libfdk-aac-dev python3-pip libharfbuzz-dev libxpresent-dev automake libegl1-mesa-dev libtool libxinerama-dev libxrandr-dev x11proto-core-dev
           sudo pip3 install --upgrade meson
+          echo "Adding FFMPEG options for build --------------------------->"
+          echo "--enable-libx264" >> ffmpeg_options
+          echo "--enable-libmp3lame" >> ffmpeg_options
+          echo "--enable-libfdk-aac" >> ffmpeg_options
+          echo "Done adding FFMPEG options."
           chmod +x rebuild
           ./rebuild -j$num_cores
 
@@ -44,4 +49,4 @@ jobs:
         with:
           name: mpv-build
           path: ./mpv/build
-          retention-days: 90
+          retention-days: 30
