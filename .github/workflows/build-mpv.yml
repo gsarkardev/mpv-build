@@ -33,7 +33,7 @@ jobs:
       - name: Get dependencies and build mpv
         run: |
           num_cores=$(nproc) && echo "No. of cores available is $num_cores"
-          sudo apt update && sudo apt install -y python3-pip ninja-build libharfbuzz-dev libxpresent-dev autoconf automake libasound2-dev libegl1-mesa-dev libfontconfig-dev libfreetype6-dev libfribidi-dev libgl1-mesa-dev libtool libx11-dev libxext-dev libxinerama-dev libxrandr-dev libxv-dev x11proto-core-dev yasm
+          sudo apt update && sudo apt install -y gcc clang yasm git meson ninja-build autoconf autotools-dev libx11-dev libxext-dev libvdpau-dev libgl1-mesa-dev libxv-dev libasound2-dev libpulse-dev libfribidi-dev libfreetype6-dev libfontconfig1-dev libjpeg-dev libssl-dev libgnutls28-dev youtube-dl libx264-dev libmp3lame-dev libfdk-aac-dev python3-pip libharfbuzz-dev libxpresent-dev automake libegl1-mesa-dev libtool libxinerama-dev libxrandr-dev x11proto-core-dev
           sudo pip3 install --upgrade meson
           chmod +x rebuild
           ./rebuild -j$num_cores
