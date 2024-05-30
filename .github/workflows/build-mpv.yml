@@ -44,6 +44,7 @@ jobs:
           sudo apt install -y gcc clang yasm git ninja-build autoconf autotools-dev libx11-dev libxext-dev libvdpau-dev libgl1-mesa-dev libxv-dev libasound2-dev libpulse-dev libfribidi-dev libfreetype6-dev libfontconfig1-dev libjpeg-dev libssl-dev libgnutls28-dev youtube-dl libx264-dev libmp3lame-dev libfdk-aac-dev libharfbuzz-dev libxpresent-dev automake libegl1-mesa-dev libtool libxinerama-dev libxrandr-dev x11proto-core-dev
           chmod +x rebuild
           ./rebuild -j$num_cores
+          echo "############################ MPV build is successful. ############################"
 
       # Uploads build directory as artifact
       - name: Upload build directory
