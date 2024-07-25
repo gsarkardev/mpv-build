@@ -1,0 +1,6 @@
+-Dprefix=/usr/local/stow/mpv
+-Dbuildtype=release
+-Ddebug=false
+
+-Dcdda=enabled
+-Ddvdnav=enabled
