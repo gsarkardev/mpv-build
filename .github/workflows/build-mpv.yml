@@ -34,10 +34,7 @@ jobs:
           sudo apt update -qq
           echo "Installing meson from pip3 --------------------------->"
           sudo apt install python3-pip && pip3 install --user meson
-          echo "Getting FFMPEG dependencies --------------------------->"
-          sudo apt install -y autoconf automake build-essential cmake git-core libass-dev libfreetype6-dev libgnutls28-dev libmp3lame-dev libsdl2-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev meson ninja-build pkg-config texinfo wget yasm zlib1g-dev nasm libx264-dev libx265-dev libnuma-dev libvpx-dev libfdk-aac-dev libopus-dev libdav1d-dev
-          echo "Getting MPV dependencies --------------------------->"
-          sudo apt install -y gcc clang yasm git ninja-build autoconf autotools-dev libx11-dev libxext-dev libvdpau-dev libgl1-mesa-dev libxv-dev libasound2-dev libpulse-dev libfribidi-dev libfreetype6-dev libfontconfig1-dev libjpeg-dev libssl-dev libgnutls28-dev youtube-dl libx264-dev libmp3lame-dev libfdk-aac-dev libharfbuzz-dev libxpresent-dev automake libegl1-mesa-dev libtool libxinerama-dev libxrandr-dev x11proto-core-dev
+          sudo apt install -y $(cat aptdeps.txt)
           chmod +x rebuild
           ./rebuild -j$num_cores
           echo "############################ MPV build is successful. ############################"
