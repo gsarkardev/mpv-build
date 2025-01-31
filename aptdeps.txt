@@ -13,7 +13,6 @@ libva-dev
 libsdl2-dev
 autotools-dev
 libx11-dev
-youtube-dl
 texinfo
 libx264-dev
 libdav1d-dev
