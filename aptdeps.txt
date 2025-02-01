@@ -84,5 +84,4 @@ libzmq3-dev
 libzvbi-dev
 lv2-dev
 libv4l-dev
-libdovi-dev
 glslang-dev
