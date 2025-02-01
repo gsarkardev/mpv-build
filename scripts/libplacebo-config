@@ -2,6 +2,7 @@
 set -e
 
 BUILD="$(pwd)"
+echo "############## LIBPLACEBO-CONFIG BUILD DIR: $BUILD ##############"
 newline="
 "
 
