@@ -2,7 +2,6 @@
 --enable-version3
 --enable-nonfree
 --enable-openssl
---enable-gnutls
 --enable-mbedtls
 --enable-libtls
 
