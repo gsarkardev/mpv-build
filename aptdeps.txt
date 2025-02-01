@@ -56,3 +56,4 @@ libaom-dev
 libaribb24-dev
 liblilv-dev
 libbluray-dev
+libbs2b-dev
