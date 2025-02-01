@@ -59,13 +59,13 @@ libbluray-dev
 libbs2b-dev
 libcodec2-dev
 libdavs2-dev
-libgsm-dev
+libgsm1-dev
 libopencore-amrnb-dev
 libopencore-amrwb-dev
 libtwolame-dev
 libvo-amrwbenc-dev
 libtheora-dev
-libxvid-dev
+libxvidcore-dev
 libcdio-dev
 librtmp-dev
 libv4l2-dev
@@ -81,7 +81,7 @@ libwebp-dev
 libxavs2-dev
 libxml2-dev
 libzimg-dev
-libzmq-dev
+libzmq3-dev
 libzvbi-dev
 lv2-dev
-libsrt-dev
+libv4l-dev
