@@ -25,7 +25,7 @@
 --enable-libcdio
 --enable-libpulse
 --enable-librtmp
---enable-libv4l2
+--enable-libv4l
 --enable-opengl
 
 --enable-ladspa

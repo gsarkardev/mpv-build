@@ -68,7 +68,6 @@ libtheora-dev
 libxvidcore-dev
 libcdio-dev
 librtmp-dev
-libv4l2-dev
 libopenmpt-dev
 librabbitmq-dev
 libshaderc-dev
