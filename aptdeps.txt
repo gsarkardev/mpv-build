@@ -58,3 +58,4 @@ liblilv-dev
 libbluray-dev
 libbs2b-dev
 libcodec2-dev
+libdavs2-dev
