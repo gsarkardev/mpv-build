@@ -53,4 +53,4 @@ nasm
 ladspa-sdk
 libc6-dev
 libaom-dev
-aribb24
+libaribb24
