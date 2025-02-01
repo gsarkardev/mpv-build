@@ -4,6 +4,7 @@ set -e
 echo() { printf %s\\n "$*"; }  # depends on standard IFS (which we have)
 
 BUILD="$(pwd)"
+echo "############# FFMPEG CONFIG BUILD DIR: $BUILD #############"
 newline="
 "
 
