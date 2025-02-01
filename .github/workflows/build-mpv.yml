@@ -38,6 +38,10 @@ jobs:
           chmod +x rebuild
           ./rebuild -j$num_cores
           echo "############################ MPV build is successful. ############################"
+      
+      - name: Verify mpv binary
+        run: |
+            ./mpv/build/mpv --version || exit 1
 
       # Uploads build directory as artifact
       - name: Upload build directory
