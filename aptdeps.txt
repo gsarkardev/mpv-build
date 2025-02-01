@@ -57,3 +57,4 @@ libaribb24-dev
 liblilv-dev
 libbluray-dev
 libbs2b-dev
+libcodec2-dev
