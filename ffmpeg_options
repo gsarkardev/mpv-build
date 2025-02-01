@@ -43,7 +43,6 @@
 --enable-libplacebo
 --enable-librabbitmq
 --enable-libshaderc
---enable-libsmbclient
 --enable-libsnappy
 --enable-libsoxr
 --enable-libspeex
