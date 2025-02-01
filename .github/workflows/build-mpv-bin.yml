@@ -1,0 +1,40 @@
+name: build-mpv-bin-for-linux
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y $(cat aptdeps.txt)
+
+      - name: Build mpv binary
+        run: |
+          num_cores=$(nproc) && echo "No. of cores available is $num_cores"
+          chmod +x rebuild
+          ./rebuild -j$num_cores
+          echo "****************** MPV build successful ******************"
+      
+      - name: Verify mpv binary
+        run: |
+            ./mpv/build/mpv --version || exit 1
+
+      - name: Upload build directory
+        uses: actions/upload-artifact@v4
+        with:
+          name: mpv-build
+          path: ./mpv/build
+          retention-days: 5
