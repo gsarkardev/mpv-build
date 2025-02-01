@@ -2,8 +2,6 @@
 --enable-version3
 --enable-nonfree
 --enable-openssl
---enable-mbedtls
---enable-libtls
 
 --cpu=host
 
