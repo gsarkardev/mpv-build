@@ -59,5 +59,3 @@
 --enable-libdav1d
 --enable-libdavs2
 --enable-libharfbuzz
-
---extra-ldflags=-L/$BUILD/build_libs/lib
