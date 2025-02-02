@@ -51,4 +51,4 @@ cd "$BUILD"/ffmpeg_build
 # which requires that
 export LDFLAGS="$LDFLAGS -lstdc++"
 export LD_LIBRARY_PATH="$BUILD/build_libs/lib:$LD_LIBRARY_PATH"
-"$BUILD"/ffmpeg/configure --prefix="$BUILD"/build_libs $OPTIONS "$@"
+"$BUILD"/ffmpeg/configure --prefix="$BUILD"/build_libs --libdir="$BUILD/build_libs/lib" $OPTIONS "$@"
