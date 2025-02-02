@@ -30,26 +30,17 @@ echo Using libplacebo options: $OPTIONS "$@"
 
 meson setup build --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" $OPTIONS "$@"
 
-# Check if libplacebo.pc exists in any of the PKG_CONFIG_PATH directories
-FOUND_PC_FILE=""
-IFS=':' read -ra DIRS <<< "$PKG_CONFIG_PATH"
-for DIR in "${DIRS[@]}"; do
-    if [ -f "$DIR/libplacebo.pc" ]; then
-        FOUND_PC_FILE="$DIR/libplacebo.pc"
-        break
-    fi
-done
-
-if [ -n "$FOUND_PC_FILE" ]; then
-    echo "✅ libplacebo.pc found at: $FOUND_PC_FILE"
+# Check if libplacebo.pc exists
+if [ -f "$PKG_CONFIG_PATH/libplacebo.pc" ]; then
+    echo "✅ libplacebo.pc found in $PKG_CONFIG_PATH"
 else
-    echo "❌ libplacebo.pc NOT found in PKG_CONFIG_PATH directories"
+    echo "❌ libplacebo.pc NOT found in $PKG_CONFIG_PATH"
     exit 1
 fi
 
 # Display contents of libplacebo.pc
 echo "📜 Contents of libplacebo.pc:"
-cat "$FOUND_PC_FILE"
+cat "$PKG_CONFIG_PATH/libplacebo.pc"
 
 # Check if pkg-config detects libplacebo
 if pkg-config --exists libplacebo; then
@@ -71,9 +62,12 @@ pkg-config --libs libplacebo
 # Debug issues
 echo "🛠 Debugging potential issues..."
 
-# Check if PKG_CONFIG_PATH includes valid directories
-echo "📂 PKG_CONFIG_PATH is currently set to:"
-echo "$PKG_CONFIG_PATH" | tr ':' '\n'  # Print each path on a new line for clarity
+# Check if PKG_CONFIG_PATH is correctly set
+if echo "$PKG_CONFIG_PATH" | grep -q "$BUILD/build_libs/lib/pkgconfig"; then
+    echo "✅ PKG_CONFIG_PATH is correctly set: $PKG_CONFIG_PATH"
+else
+    echo "❌ PKG_CONFIG_PATH is missing $BUILD/build_libs/lib/pkgconfig. Try exporting it manually."
+fi
 
 # Check for missing dependencies
 MISSING_DEPS=$(pkg-config --print-requires libplacebo 2>&1 | grep "not found")
@@ -84,3 +78,5 @@ if [ -n "$MISSING_DEPS" ]; then
 else
     echo "✅ No missing dependencies detected."
 fi
+
+echo "🎯 LIBPLACEBO validation script execution complete."
