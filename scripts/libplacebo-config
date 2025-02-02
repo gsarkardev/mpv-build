@@ -29,3 +29,52 @@ test -d build && OPTIONS="$OPTIONS --wipe"
 echo Using libplacebo options: $OPTIONS "$@"
 
 meson setup build --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" $OPTIONS "$@"
+
+# Check if libplacebo.pc exists
+if [ -f "$PKG_CONFIG_DIR/libplacebo.pc" ]; then
+    echo "✅ libplacebo.pc found in $PKG_CONFIG_DIR"
+else
+    echo "❌ libplacebo.pc NOT found in $PKG_CONFIG_DIR"
+    exit 1
+fi
+
+# Display contents of libplacebo.pc
+echo "📜 Contents of libplacebo.pc:"
+cat "$PKG_CONFIG_DIR/libplacebo.pc"
+
+# Check if pkg-config detects libplacebo
+if pkg-config --exists libplacebo; then
+    echo "✅ pkg-config successfully detects libplacebo"
+else
+    echo "❌ pkg-config CANNOT find libplacebo"
+fi
+
+# Get detailed info
+echo "📌 libplacebo version:"
+pkg-config --modversion libplacebo
+
+echo "🔧 Compile flags:"
+pkg-config --cflags libplacebo
+
+echo "🔗 Linker flags:"
+pkg-config --libs libplacebo
+
+# Debug issues
+echo "🛠 Debugging potential issues..."
+
+# Check if PKG_CONFIG_PATH is correctly set
+if echo "$PKG_CONFIG_PATH" | grep -q "$PKG_CONFIG_DIR"; then
+    echo "✅ PKG_CONFIG_PATH is correctly set: $PKG_CONFIG_PATH"
+else
+    echo "❌ PKG_CONFIG_PATH is missing $PKG_CONFIG_DIR. Try exporting it manually."
+fi
+
+# Check for missing dependencies
+MISSING_DEPS=$(pkg-config --print-requires libplacebo 2>&1 | grep "not found")
+
+if [ -n "$MISSING_DEPS" ]; then
+    echo "⚠️ Missing dependencies detected:"
+    echo "$MISSING_DEPS"
+else
+    echo "✅ No missing dependencies detected."
+fi
