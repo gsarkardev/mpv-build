@@ -6,6 +6,7 @@ export LC_ALL=C
 #scripts/fribidi-build "$@"
 scripts/libplacebo-config
 scripts/libplacebo-build "$@"
+chmod +x scripts/libplacebo-validate
 scripts/libplacebo-validate
 scripts/libass-config
 scripts/libass-build "$@"

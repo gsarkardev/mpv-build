@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+echo ⏳ Validating libplacebo...
+
 # Check if libplacebo.pc exists
 if [ -f "$PKG_CONFIG_PATH/libplacebo.pc" ]; then
     echo "✅ libplacebo.pc found in $PKG_CONFIG_PATH"
