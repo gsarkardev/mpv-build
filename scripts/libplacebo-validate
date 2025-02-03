@@ -52,14 +52,4 @@ else
     exit 1
 fi
 
-# # Check for missing dependencies
-# MISSING_DEPS=$(pkg-config --print-requires libplacebo 2>&1 | grep "not found")
-
-# if [ -n "$MISSING_DEPS" ]; then
-#     echo "⚠️ Missing dependencies detected:"
-#     echo "$MISSING_DEPS"
-# else
-#     echo "✅ No missing dependencies detected."
-# fi
-
 echo "🎯 LIBPLACEBO validation script execution complete."
