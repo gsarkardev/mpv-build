@@ -3,6 +3,11 @@ set -e
 
 echo ⏳ Validating libplacebo...
 
+BUILD="$(pwd)"
+echo Build dir: $BUILD
+export PKG_CONFIG_PATH="$BUILD/build_libs/lib/pkgconfig:$PKG_CONFIG_PATH"
+echo PKG_CONFIG_PATH: $PKG_CONFIG_PATH
+
 # Check if libplacebo.pc exists
 if [ -f "$PKG_CONFIG_PATH/libplacebo.pc" ]; then
     echo "✅ libplacebo.pc found in $PKG_CONFIG_PATH"
