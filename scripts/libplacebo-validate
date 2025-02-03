@@ -13,6 +13,14 @@ if [ -f "$PKG_CONFIG_PATH/libplacebo.pc" ]; then
     echo "✅ libplacebo.pc found in $PKG_CONFIG_PATH"
 else
     echo "❌ libplacebo.pc NOT found in $PKG_CONFIG_PATH"
+
+    # List all files in PKG_CONFIG_PATH directories
+    echo "📂 Listing all files in PKG_CONFIG_PATH directories:"
+    for path in $(echo "$PKG_CONFIG_PATH" | tr ':' ' '); do
+        echo "🔍 Checking directory: $path"
+        ls -1 "$path" 2>/dev/null || echo "⚠️ Directory not found or empty: $path"
+    done
+    
     exit 1
 fi
 
