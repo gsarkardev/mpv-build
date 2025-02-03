@@ -1,5 +1,7 @@
 #!/bin/sh
 set -e
+
+echo ************** Starting libass-config **************
 BUILD="$(pwd)"
 newline="
 "
@@ -25,6 +27,7 @@ case "$PKG_CONFIG_PATH" in
 esac
 
 cd "$BUILD"/libass
+echo Executing autogen.sh and configure...
 # Later libass doesn't automatically run configure with autogen.sh anymore
 ./autogen.sh --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" $OPTIONS "$@"
 ./configure  --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" $OPTIONS "$@"

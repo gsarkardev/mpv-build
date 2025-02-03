@@ -45,9 +45,6 @@ pkg-config --cflags libplacebo
 echo "🔗 Linker flags:"
 pkg-config --libs libplacebo
 
-# Debug issues
-echo "🛠 Debugging potential issues..."
-
 # Check if PKG_CONFIG_PATH is correctly set
 if echo "$PKG_CONFIG_PATH" | grep -q "$BUILD/build_libs/lib/pkgconfig"; then
     echo "✅ PKG_CONFIG_PATH is correctly set: $PKG_CONFIG_PATH"
