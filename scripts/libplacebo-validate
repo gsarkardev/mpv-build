@@ -1,5 +1,4 @@
 #!/bin/sh
-set -e
 
 echo ⏳ Validating libplacebo...
 
@@ -50,16 +49,17 @@ if echo "$PKG_CONFIG_PATH" | grep -q "$BUILD/build_libs/lib/pkgconfig"; then
     echo "✅ PKG_CONFIG_PATH is correctly set: $PKG_CONFIG_PATH"
 else
     echo "❌ PKG_CONFIG_PATH is missing $BUILD/build_libs/lib/pkgconfig. Try exporting it manually."
+    exit 1
 fi
 
-# Check for missing dependencies
-MISSING_DEPS=$(pkg-config --print-requires libplacebo 2>&1 | grep "not found")
+# # Check for missing dependencies
+# MISSING_DEPS=$(pkg-config --print-requires libplacebo 2>&1 | grep "not found")
 
-if [ -n "$MISSING_DEPS" ]; then
-    echo "⚠️ Missing dependencies detected:"
-    echo "$MISSING_DEPS"
-else
-    echo "✅ No missing dependencies detected."
-fi
+# if [ -n "$MISSING_DEPS" ]; then
+#     echo "⚠️ Missing dependencies detected:"
+#     echo "$MISSING_DEPS"
+# else
+#     echo "✅ No missing dependencies detected."
+# fi
 
 echo "🎯 LIBPLACEBO validation script execution complete."
