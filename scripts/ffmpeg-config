@@ -44,6 +44,7 @@ case "$PKG_CONFIG_PATH" in
 esac
 
 echo Using ffmpeg options: $OPTIONS "$@"
+echo Using pkg-config path $PKG_CONFIG_PATH
 
 mkdir -p "$BUILD"/ffmpeg_build
 cd "$BUILD"/ffmpeg_build
