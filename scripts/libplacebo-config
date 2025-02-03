@@ -30,6 +30,9 @@ echo Using libplacebo options: $OPTIONS "$@"
 
 meson setup build --prefix="$BUILD/build_libs" --libdir="$BUILD/build_libs/lib" $OPTIONS "$@"
 
+cd build
+ninja  # Waits until build completes
+
 # Check if libplacebo.pc exists
 if [ -f "$PKG_CONFIG_PATH/libplacebo.pc" ]; then
     echo "✅ libplacebo.pc found in $PKG_CONFIG_PATH"

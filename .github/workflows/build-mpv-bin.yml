@@ -26,11 +26,11 @@ jobs:
           num_cores=$(nproc) && echo "No. of cores available is $num_cores"
           chmod +x rebuild
           ./rebuild -j$num_cores
-          echo "****************** MPV build successful ******************"
       
       - name: Verify mpv binary
         run: |
             ./mpv/build/mpv --version || exit 1
+            echo "****************** MPV build successful ******************"
 
       - name: Upload build directory
         uses: actions/upload-artifact@v4
